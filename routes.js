@@ -1,9 +1,9 @@
 const {Router} = require('express')
+const USER = require('./controller/userController')
 
 const routes = Router()
 
-routes.get('/usuarios', (req, res) =>{
-    res.json({message: "ola Mundo"})
-})
+/**Usando as rotas de usuarios */
+routes.get('/usuarios', USER.index)
 
 module.exports = routes
