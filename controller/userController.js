@@ -2,6 +2,7 @@ const USER = require('../model/userModel')
 const verifycpf = require('../utils/cpfValidatorUtil')
 const convertDate = require('../utils/dateConverter')
 const validateDate = require('validate-date')
+const Street = require('../utils/findStreet')
 
 module.exports = {
     /**listando todos os usuarios */
@@ -12,7 +13,7 @@ module.exports = {
 
     /** salvando um usuario com findOneAndUpdate*/
     async store(req, res, next){
-        const {nomeUser, cpfUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser} = req.body
+        const {nomeUser, cpfUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, endereco} = req.body
 
         //verificando cpf
         if(!verifycpf.verify(cpfUser)){
@@ -27,6 +28,8 @@ module.exports = {
         
         //realizando conversão da data para o formato do banco de dados
         const nascimentoUser = convertDate.parseDate(dataNascimentoUser)
+
+        const enderecoUser = await Street.findendereco(endereco)
 
         //cadastrando ou atualizando o usuario
         const user = await USER.findOneAndUpdate(
