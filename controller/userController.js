@@ -3,6 +3,7 @@ const verifycpf = require('../utils/cpfValidatorUtil')
 const convertDate = require('../utils/dateConverter')
 const validateDate = require('validate-date')
 const Street = require('../utils/findStreet')
+var bcrypt = require('bcryptjs');
 
 module.exports = {
     /**listando todos os usuarios */
@@ -13,7 +14,7 @@ module.exports = {
 
     /** salvando um usuario com findOneAndUpdate*/
     async store(req, res, next){
-        const {nomeUser, cpfUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, endereco} = req.body
+        const {nomeUser, cpfUser, loginUser, senha, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, endereco} = req.body
 
         //verificando cpf
         if(!verifycpf.verify(cpfUser)){
@@ -25,11 +26,15 @@ module.exports = {
         if(date == 'Invalid Format'){
             return res.json({message: "Data Invalida"})
         }
-        
+
         //realizando conversão da data para o formato do banco de dados
         const nascimentoUser = convertDate.parseDate(dataNascimentoUser)
 
+        //realizando a consulta do endereço
         const enderecoUser = await Street.findendereco(endereco)
+
+        //criptografando senha do usuario
+        const senhaUser = bcrypt.hashSync(senha, 10)
 
         //cadastrando ou atualizando o usuario
         const user = await USER.findOneAndUpdate(
