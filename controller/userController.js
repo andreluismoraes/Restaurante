@@ -1,6 +1,7 @@
 const USER = require('../model/userModel')
 const verifycpf = require('../utils/cpfValidatorUtil')
 const convertDate = require('../utils/dateConverter')
+const validateDate = require('validate-date')
 
 module.exports = {
     /**listando todos os usuarios */
@@ -13,22 +14,30 @@ module.exports = {
     async store(req, res, next){
         const {nomeUser, cpfUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser} = req.body
 
+        //verificando cpf
         if(!verifycpf.verify(cpfUser)){
             return res.json({message: "CPF Inválido"})
+        }
 
-        }else{
-            const nascimentoUser = convertDate.parseDate(dataNascimentoUser)
+        //verificando data
+        const date = validateDate(dataNascimentoUser)
+        if(date == 'Invalid Format'){
+            return res.json({message: "Data Invalida"})
+        }
+        
+        //realizando conversão da data para o formato do banco de dados
+        const nascimentoUser = convertDate.parseDate(dataNascimentoUser)
 
-            const user = await USER.findOneAndUpdate(
-                //search
-                {cpfUser},
-                //atualizando ou inserindo os dados
-                {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, nascimentoUser, enderecoUser}},
-                //habilitando o upsert e retornando caso for novo
-                {upsert: true, new: true}
-            )
-            return res.json(user)
-        }   
+        //cadastrando ou atualizando o usuario
+        const user = await USER.findOneAndUpdate(
+            //search
+            {cpfUser},
+            //atualizando ou inserindo os dados
+            {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, nascimentoUser, enderecoUser}},
+            //habilitando o upsert e retornando caso for novo
+            {upsert: true, new: true}
+        )
+        return res.json(user)  
     },
 
     async findUserStreet(req, res){

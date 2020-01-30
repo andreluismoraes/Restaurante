@@ -1,4 +1,3 @@
-//convertendo o dia de hoje para um formato simples (YYYY-MM-DD)
 
 module.exports = {
     parseDate(data){
