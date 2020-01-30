@@ -1,5 +1,6 @@
 const USER = require('../model/userModel')
 const verifycpf = require('../utils/cpfValidatorUtil')
+const convertDate = require('../utils/dateConverter')
 
 module.exports = {
     /**listando todos os usuarios */
@@ -16,11 +17,13 @@ module.exports = {
             return res.json({message: "CPF Inválido"})
 
         }else{
+            const nascimentoUser = convertDate.parseDate(dataNascimentoUser)
+
             const user = await USER.findOneAndUpdate(
                 //search
                 {cpfUser},
                 //atualizando ou inserindo os dados
-                {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser}},
+                {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, nascimentoUser, enderecoUser}},
                 //habilitando o upsert e retornando caso for novo
                 {upsert: true, new: true}
             )

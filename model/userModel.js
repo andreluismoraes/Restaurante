@@ -11,7 +11,7 @@ const USERSchema = new mongoose.Schema({
     funcaoUser: String, 
     emailUser: String,
     telefoneUser: String,
-    dataNascimentoUser: Date,
+    nascimentoUser: Date,
     enderecoUser: Object
 })
 
