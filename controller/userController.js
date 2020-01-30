@@ -1,4 +1,5 @@
 const USER = require('../model/userModel')
+const verifycpf = require('../utils/cpfValidatorUtil')
 
 module.exports = {
     /**listando todos os usuarios */
@@ -8,18 +9,23 @@ module.exports = {
     },
 
     /** salvando um usuario com findOneAndUpdate*/
-    async store(req, res){
+    async store(req, res, next){
         const {nomeUser, cpfUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser} = req.body
 
-        const user = await USER.findOneAndUpdate(
-            //search
-            {cpfUser},
-            //atualizando ou inserindo os dados
-            {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser}},
-            //habilitando o upsert e retornando caso for novo
-            {upsert: true, new: true}
-        )
-        return res.json(user)
+        if(!verifycpf.verify(cpfUser)){
+            return res.json({message: "CPF Inválido"})
+
+        }else{
+            const user = await USER.findOneAndUpdate(
+                //search
+                {cpfUser},
+                //atualizando ou inserindo os dados
+                {$set: {cpfUser, nomeUser, loginUser, senhaUser, funcaoUser, emailUser, telefoneUser, dataNascimentoUser, enderecoUser}},
+                //habilitando o upsert e retornando caso for novo
+                {upsert: true, new: true}
+            )
+            return res.json(user)
+        }   
     },
 
     async findUserStreet(req, res){
