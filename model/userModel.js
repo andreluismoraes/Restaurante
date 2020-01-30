@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const USERSchema = new mongoose.Schema({
     nomeUser: String,
-    cpf: Number,
+    cpfUser: Number,
     loginUser: String,
     senhaUser: String,
     funcaoUser: String, 
