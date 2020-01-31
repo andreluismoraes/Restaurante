@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const USER = require('./controller/userController')
+const CLIENTE = require('./controller/clienteController')
 
 const routes = Router()
 
@@ -7,6 +8,9 @@ const routes = Router()
 routes.get('/user', USER.index)
 routes.get('/user/login', USER.loginUser)
 routes.post('/user', USER.store)
+
+/**Usando as rotas dos clientes */
+routes.get('/cliente', CLIENTE.index)
 
 
 module.exports = routes
