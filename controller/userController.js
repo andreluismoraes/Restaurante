@@ -50,24 +50,22 @@ module.exports = {
 
     async loginUser(req, res){
         const {cpfUser, senha} = req.query
-        
-        // const senhaUser = '$2a$10$RDGQ5U.pZnbX1p5UUSz9QOHNfmIUfU/V1t8sZ/c9PXOhuz69zjwZq'
 
-        // const teste = await bcrypt.compare(senha, senhaUser)
-
+        //procurando o usuario pela senha
         const user = await USER.find(
             //search
             {cpfUser}
-        )
+        ).select('senhaUser')   
 
-        const teste = user.slice(1)
-        console.log(teste)
+        //pegando o hash da senha
+        const password = user.pop(data => data.senhaUser)
 
-        //const password = await bcrypt.compare(senha, user)
-
-        // console.log(password)
-
-        return res.json(user)
+        //se o cpf e senha estão corretos entra no sistema
+        if(!bcrypt.compareSync(senha, password.senhaUser)){
+            return res.json({message: 'Login ou senha inválido'})
+        }
+        
+        return res.json({message: 'Usuario autorizado'})
 
     },
 

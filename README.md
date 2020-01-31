@@ -4,7 +4,6 @@ Este repositório tem como objetivo para consultas tanto para Alunos/profissiona
 
 obs. não é um projeto real só para aprendizado/estudos 
 
-Testando o clone do github
-
 Planejando:
-[] = Validar o usuario por cpf e senha
+[x] = Testando o clone do github
+[x] = Validar o usuario por cpf e senha
