@@ -9,8 +9,9 @@ module.exports = {
         return res.json(produto)
     },
 
+    //cadastrando produtos
     async store(req, res){
-        const {nomeProduto, valorProduto, quantidadeProduto, validade} = req.body
+        const {codigoProduto, nomeProduto, valorProduto, quantidadeProduto, validade} = req.body
 
         //verificando data
         const date = validateDate(validade)
@@ -24,9 +25,9 @@ module.exports = {
         /**cadastrando produtos usando o findOneAndUpdate*/
         const produto = await PRODUTO.findOneAndUpdate(
             //search
-            {nomeProduto},
+            {codigoProduto},
             //inserindo o produto ou atualizando
-            {$set: {nomeProduto, valorProduto, quantidadeProduto, validadeProduto}},
+            {$set: {codigoProduto, nomeProduto, valorProduto, quantidadeProduto, validadeProduto}},
             //habilitando o upsert: true, e retornando com new:true
             {upsert: true, new: true}
         )
