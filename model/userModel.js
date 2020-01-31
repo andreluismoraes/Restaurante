@@ -15,7 +15,8 @@ const USERSchema = new mongoose.Schema({
     emailUser: String,
     telefoneUser: String,
     nascimentoUser: Date,
-    enderecoUser: Object
+    enderecoUser: Object,
+    hashUser: String
 })
 
 module.exports = mongoose.model('USER', USERSchema)

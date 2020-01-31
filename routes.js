@@ -5,7 +5,7 @@ const routes = Router()
 
 /**Usando as rotas de usuarios */
 routes.get('/user', USER.index)
-routes.get('/login', USER.loginUser)
+routes.get('/user/login', USER.loginUser)
 routes.post('/user', USER.store)
 
 

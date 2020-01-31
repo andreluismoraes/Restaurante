@@ -49,7 +49,26 @@ module.exports = {
     },
 
     async loginUser(req, res){
-        res.json({message: 'login'})
+        const {cpfUser, senha} = req.query
+        
+        // const senhaUser = '$2a$10$RDGQ5U.pZnbX1p5UUSz9QOHNfmIUfU/V1t8sZ/c9PXOhuz69zjwZq'
+
+        // const teste = await bcrypt.compare(senha, senhaUser)
+
+        const user = await USER.find(
+            //search
+            {cpfUser}
+        )
+
+        const teste = user.slice(1)
+        console.log(teste)
+
+        //const password = await bcrypt.compare(senha, user)
+
+        // console.log(password)
+
+        return res.json(user)
+
     },
 
 }
