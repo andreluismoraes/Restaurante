@@ -48,8 +48,8 @@ module.exports = {
         return res.json(user)  
     },
 
-    async findUserStreet(req, res){
-
+    async loginUser(req, res){
+        res.json({message: 'login'})
     },
 
 }
