@@ -48,6 +48,7 @@ module.exports = {
         return res.json(user)  
     },
 
+    /**verificando login senha do usuario */
     async loginUser(req, res){
         const {cpfUser, senha} = req.query
 
