@@ -12,7 +12,7 @@ Planejando:
 [x] = Ajustar as rotas do cliente
 [x] = Adicionar um cliente
 [x] = Localizando um cliente por cpf
-[] = Modelando os produtos
-[] = Mostrando todos os produtos
-[] = Salvando os produtos
-[] = Localizando os pelo nome
+[x] = Modelando os produtos
+[x] = Mostrando todos os produtos
+[x] = Salvando os produtos
+[x] = Localizando os pelo nome
