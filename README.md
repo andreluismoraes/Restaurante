@@ -4,10 +4,10 @@ Este repositório tem como objetivo para consultas tanto para Alunos/profissiona
 
 obs. não é um projeto real só para aprendizado/estudos 
 
-Planejando:
+Planejando: 
 [x] = Testando o clone do github.
 [x] = Validar o usuario por cpf e senha.
 [x] = Criando o modelo cliente
 [x] = Criando o controller Cliente
-[] = Ajustar as rotas do cliente
-[] = Adicionar um cliente
+[x] = Ajustar as rotas do cliente
+[x] = Adicionar um cliente

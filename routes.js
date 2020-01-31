@@ -11,6 +11,7 @@ routes.post('/user', USER.store)
 
 /**Usando as rotas dos clientes */
 routes.get('/cliente', CLIENTE.index)
+routes.post('/cliente', CLIENTE.store)
 
 
 module.exports = routes
