@@ -11,3 +11,4 @@ Planejando:
 [x] = Criando o controller Cliente
 [x] = Ajustar as rotas do cliente
 [x] = Adicionar um cliente
+[x] = Localizando um cliente por cpf

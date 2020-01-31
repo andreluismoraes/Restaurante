@@ -68,6 +68,8 @@ module.exports = {
         
         return res.json({message: 'Usuario autorizado'})
 
+    
+    
     },
 
 }

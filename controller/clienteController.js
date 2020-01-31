@@ -13,7 +13,7 @@ module.exports = {
     },
 
     /**salvando um cliente */
-    async store(req, res, next){
+    async store(req, res){
         const {cpfCliente, nomeCliente, telefoneCliente, nascimentoCliente, endereco} = req.body
 
         //verificando cpf
@@ -45,6 +45,17 @@ module.exports = {
         )
         return res.json(user)  
     },
+
+    /**localizando um cliente por cpf */
+    async findCliente(req, res){
+        const cpfCliente = req.query.cpf
+        
+        const cliente = await CLIENTE.find(
+            //search
+            {cpfCliente}
+        )
+        return res.json(cliente)
+    }
 }
 
 /**cpfCliente: {
