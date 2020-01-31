@@ -6,7 +6,7 @@ const ProdutoSchema = new mongoose.Schema({
     nome: String,
     valor: Number,
     quantidade: Number,
-    validate: Date,
+    validade: Date
 })
 
 module.exports = mongoose.model('Produto', ProdutoSchema)
