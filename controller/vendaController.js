@@ -64,6 +64,11 @@ module.exports = {
         )
 
         return res.json(venda)
+    },
+
+    /** filtrar todas as vendas de uma data */
+    async findVenda(req, res){
+        return res.json({message: 'findVenda'})
     }
 }
 
