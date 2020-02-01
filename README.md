@@ -19,4 +19,7 @@ Planejando:
 [x] = Modelando venda
 [x] = Salvar venda
 [x] = Consultar todas as vendas
-[] = Ajustar a venda para trazer o codigo do produto para trazer qual o codigo dele e o nome
+[x] = Ajustar a venda para trazer o codigo do produto para trazer qual o codigo dele, valor e nome
+[] = Dar baixa no estoque assim que vende
+[] = Filtrar a venda pela data
+[] = Gerar qr-Code da venda realizada, trazendo os produtos e valor total
