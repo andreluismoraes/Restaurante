@@ -24,6 +24,7 @@ module.exports = {
             {cpfCliente}
         ).select('nomeCliente')
 
+        /**Insrindo o dia de hoje */
         const dataVenda = new Date()
 
         /**iniciando os produtos vazio */
@@ -53,7 +54,7 @@ module.exports = {
             totalVenda += parseFloat(inserirProduto.map(data => data.valorProduto))
         }
 
-        // /**cadastrando ou alterando uma venda */
+        /**cadastrando ou alterando uma venda */
         const venda = await VENDA.findOneAndUpdate(
             //search
             {dataVenda},
@@ -68,7 +69,20 @@ module.exports = {
 
     /** filtrar todas as vendas de uma data */
     async findVenda(req, res){
-        return res.json({message: 'findVenda'})
+        const {dataInicial, dataFinal} = req.query
+
+        if(Date.parse(dataFinal) > Date.parse(dataInicial)){
+            return res.json({message: 'A data final é maior que a data inicial'})
+        }
+
+        /**procurando uma venda em um intervalo de datas */
+        /**$gte = maior ou igual que*/
+        /**$lt = menor que */
+        const venda = await VENDA.find(
+            //search
+            {dataVenda: {$gte: dataInicial, $lt:dataFinal}}
+        )
+        return res.json(venda)
     }
 }
 
