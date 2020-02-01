@@ -53,20 +53,17 @@ module.exports = {
             totalVenda += parseFloat(inserirProduto.map(data => data.valorProduto))
         }
 
-
-        console.log(produtoVenda)
-
         // /**cadastrando ou alterando uma venda */
-        // const venda = await VENDA.findOneAndUpdate(
-        //     //search
-        //     {dataVenda},
-        //     //atualizando ou inserindo os dados
-        //     {$set: {userVenda, clienteVenda, produtoVenda, dataVenda, totalVenda}},
-        //     //habilitando upsert e retornando new:true
-        //     {upsert: true, new: true}
-        // )
+        const venda = await VENDA.findOneAndUpdate(
+            //search
+            {dataVenda},
+            //atualizando ou inserindo os dados
+            {$set: {userVenda, clienteVenda, produtoVenda, dataVenda, totalVenda}},
+            //habilitando upsert e retornando new:true
+            {upsert: true, new: true}
+        )
 
-        // return res.json(venda)
+        return res.json(venda)
     }
 }
 
