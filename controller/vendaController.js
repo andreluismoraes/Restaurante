@@ -12,7 +12,7 @@ module.exports = {
 
     /**salvar uma venda */
     async store(req, res){
-        const {cpfUser, cpfCliente, produtoVenda } = req.body
+        const {cpfUser, cpfCliente, produtos } = req.body
 
         /** localizando usuario */
         const userVenda = await USER.find(
@@ -26,12 +26,31 @@ module.exports = {
 
         const dataVenda = new Date()
 
+        /**iniciando os produtos vazio */
+        let produtoVenda = []
+        
+        /**iniciando o total da venda = 0 */
+        let totalVenda = 0
+
+        /**percorrendo os produtos inseridos */
+        for(let i = 0; i < produtos.length; i++){
+            /**produrando os produtos adicionados e selecionando campos especificos */
+            let inserirProduto = await PRODUTO.find(
+                produtos[i]
+            ).select('codigoProduto').select('valorProduto')
+            /**Adicionando o produto na venda */
+            produtoVenda.push(inserirProduto)
+            /**calculando o total da venda */
+            totalVenda += parseFloat(inserirProduto.map(data => data.valorProduto))
+        }
+
+
         /**cadastrando ou alterando uma venda */
         const venda = await VENDA.findOneAndUpdate(
             //search
             {dataVenda},
             //atualizando ou inserindo os dados
-            {$set: {userVenda, clienteVenda, produtoVenda, dataVenda}},
+            {$set: {userVenda, clienteVenda, produtoVenda, dataVenda, totalVenda}},
             //habilitando upsert e retornando new:true
             {upsert: true, new: true}
         )

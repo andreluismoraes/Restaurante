@@ -19,3 +19,4 @@ Planejando:
 [x] = Modelando venda
 [x] = Salvar venda
 [x] = Consultar todas as vendas
+[] = Ajustar a venda para trazer o codigo do produto para trazer qual o codigo dele e o nome
