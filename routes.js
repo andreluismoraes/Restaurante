@@ -2,6 +2,7 @@ const {Router} = require('express')
 const USER = require('./controller/userController')
 const CLIENTE = require('./controller/clienteController')
 const PRODUTO  = require('./controller/produtoController')
+const VENDA = require('./controller/vendaController')
 
 const routes = Router()
 
@@ -20,5 +21,8 @@ routes.get('/produto', PRODUTO.index)
 routes.get('/findProduto', PRODUTO.findProduct)
 routes.post('/produto', PRODUTO.store)
 
+/**Usando as rotas de vendas */
+routes.get('/venda', VENDA.index)
+routes.post('/venda', VENDA.store)
 
 module.exports = routes

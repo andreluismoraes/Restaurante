@@ -16,6 +16,6 @@ Planejando:
 [x] = Mostrando todos os produtos
 [x] = Salvando os produtos
 [x] = Localizando os pelo nome
-[] = Modelando venda
-[] = Salvar venda
-[] = Consultar venda
+[x] = Modelando venda
+[x] = Salvar venda
+[x] = Consultar todas as vendas
