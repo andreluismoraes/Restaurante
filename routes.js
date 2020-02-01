@@ -23,6 +23,8 @@ routes.post('/produto', PRODUTO.store)
 
 /**Usando as rotas de vendas */
 routes.get('/venda', VENDA.index)
+routes.get('/findVenda', VENDA.findVenda)
 routes.post('/venda', VENDA.store)
+
 
 module.exports = routes
