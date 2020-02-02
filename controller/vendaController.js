@@ -74,7 +74,7 @@ module.exports = {
     async findVenda(req, res){
         const {dataInicial, dataFinal} = req.query
 
-        if(Date.parse(dataFinal) > Date.parse(dataInicial)){
+        if(Date.parse(dataFinal) < Date.parse(dataInicial)){
             return res.json({message: 'A data final é maior que a data inicial'})
         }
 
@@ -93,17 +93,16 @@ module.exports = {
         const venda = await VENDA.find(
             //search
             {dataVenda: req.query.data}
-        ).select('totalVenda')
+        ).select('produtoVenda.codigoProduto').select('totalVenda')
 
         /**gerando o qrCode */
-        const qr = await qrcode.toDataURL(venda);
+        const qr = await qrcode.toDataURL(JSON.stringify(venda));
 
         fs.writeFileSync('./qr.html', `<img src="${qr}">`);
-        console.log('Wrote to ./qr.html');
         
         // // /**fim da geração do Qr */
 
-        return res.json({message: 'QRCode gerado com sucesso!'})
+        return res.json(venda/*{message: 'QRCode gerado com sucesso!'}*/)
     }
 }
 

@@ -22,4 +22,4 @@ Planejando:
 [x] = Ajustar a venda para trazer o codigo do produto para trazer qual o codigo dele, valor e nome
 [x] = Dar baixa no estoque assim que vende
 [x] = Filtrar a venda pela data
-[] = Gerar qr-Code da venda realizada, trazendo os produtos e valor total
+[] = Gerar qr-Code da venda realizada, trazendo o codigo dos protudos e valor total da venda
