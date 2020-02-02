@@ -3,6 +3,7 @@ const convertDate = require('../utils/dateConverter')
 const validateDate = require('validate-date')
 
 module.exports = {
+    /**mostrando todos os produtos */
     async index(req, res){
         /**trazendo todos os produtos cadastrados */
         const produto = await PRODUTO.find()
@@ -34,6 +35,7 @@ module.exports = {
         return res.json(produto)
     },
 
+    /**produrando um produto por nome */
     async findProduct(req, res){
         const nomeProduto = req.query.produto
         /** achando um produto por nome */
@@ -42,7 +44,13 @@ module.exports = {
             {nomeProduto}
         )
         return res.json(produto)
-    }
+    },
+
+    /**adicionando imagens ao produto */
+    /**achei melhor montar a imagem do produto separado pois o store está com muito código ----> ^(*-*)^ ---- */
+    async storeImage(req, res){
+        res.json({message: 'Adicionando uma imagem'})
+    },
 }
 
 /**nome: String,
