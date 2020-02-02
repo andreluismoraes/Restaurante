@@ -49,11 +49,27 @@ module.exports = {
     /**adicionando imagens ao produto */
     /**achei melhor montar a imagem do produto separado pois o store está com muito código ----> ^(*-*)^ ---- */
     async storeImage(req, res){
+
+        const produto = find(
+            //search
+            {codigoProduto}
+        )
         res.json({message: 'Adicionando uma imagem'})
     },
 }
 
-/**nome: String,
-    valor: Number,
-    quantidade: Number,
-    validade: Date */
+/**codigoProduto: {
+        type: { Number, 
+                require: true
+        }
+    },
+    nomeProduto: String,
+    valorProduto: Number,
+    quantidadeProduto: Number,
+    validadeProduto: Date,
+    imagemProduto: [Object] */
+
+    /**imagem{
+     * nomeImagem: String,
+    localImagem: String,
+    }*/

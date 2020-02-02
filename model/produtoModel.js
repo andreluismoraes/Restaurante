@@ -13,7 +13,10 @@ const ProdutoSchema = new mongoose.Schema({
     quantidadeProduto: Number,
     validadeProduto: Date,
     /**modelo de adicionar imagens ao produto */
-    imagemProduto: [Object]
+    imagemProduto: new mongoose.Schema({
+        nomeImagem: String,
+        localImagem: [String]
+    })
 })
 
 module.exports = mongoose.model('Produto', ProdutoSchema)
