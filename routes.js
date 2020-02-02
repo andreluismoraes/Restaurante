@@ -20,6 +20,7 @@ routes.post('/cliente', CLIENTE.store)
 routes.get('/produto', PRODUTO.index)
 routes.get('/findProduto', PRODUTO.findProduct)
 routes.post('/produto', PRODUTO.store)
+routes.post('/produtoImagem', PRODUTO.storeImage)
 
 /**Usando as rotas de vendas */
 routes.get('/venda', VENDA.index)
