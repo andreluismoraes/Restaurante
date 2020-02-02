@@ -2,6 +2,9 @@ const VENDA = require('../model/vendasModel')
 const USER = require('../model/userModel')
 const PRODUTO = require('../model/produtoModel')
 const CLIENTE = require('../model/clienteModel')
+const qrcode = require('qrcode')
+const fs = require('fs')
+
 
 module.exports = {
     /**mostrar todas as vendas */
@@ -83,6 +86,24 @@ module.exports = {
             {dataVenda: {$gte: dataInicial, $lt:dataFinal}}
         )
         return res.json(venda)
+    },
+
+    /**gerando qrcode */
+    async generateQrCode(req, res){
+        const venda = await VENDA.find(
+            //search
+            {dataVenda: req.query.data}
+        ).select('totalVenda')
+
+        /**gerando o qrCode */
+        const qr = await qrcode.toDataURL(venda);
+
+        fs.writeFileSync('./qr.html', `<img src="${qr}">`);
+        console.log('Wrote to ./qr.html');
+        
+        // // /**fim da geração do Qr */
+
+        return res.json({message: 'QRCode gerado com sucesso!'})
     }
 }
 

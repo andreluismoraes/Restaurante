@@ -25,6 +25,7 @@ routes.post('/produto', PRODUTO.store)
 routes.get('/venda', VENDA.index)
 routes.get('/findVenda', VENDA.findVenda)
 routes.post('/venda', VENDA.store)
+routes.get('/generateQrCode', VENDA.generateQrCode)
 
 
 module.exports = routes
