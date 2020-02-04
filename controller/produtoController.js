@@ -1,6 +1,7 @@
 const PRODUTO = require('../model/produtoModel')
 const convertDate = require('../utils/dateConverter')
 const validateDate = require('validate-date')
+const fs = require('fs')
 
 module.exports = {
     /**mostrando todos os produtos */
@@ -49,12 +50,7 @@ module.exports = {
     /**adicionando imagens ao produto */
     /**achei melhor montar a imagem do produto separado pois o store está com muito código ----> ^(*-*)^ ---- */
     async storeImage(req, res){
-
-        const produto = find(
-            //search
-            {codigoProduto}
-        )
-        res.json({message: 'Adicionando uma imagem'})
+        res.json({message: 'ola'})
     },
 }
 
