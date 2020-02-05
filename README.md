@@ -23,6 +23,10 @@ Planejando:
 [x] = Dar baixa no estoque assim que vende
 [x] = Filtrar a venda pela data
 [x] = Gerar qr-Code da venda realizada, trazendo o codigo dos protudos e valor total da venda
-[] = Modelar o salvamento de uma ou várias imagens do produto
-[] = Salvar uma imagem do produto e salvar em uma pasta de imagens.
+[x] = Modelar o salvamento de uma ou várias imagens do produto
+[x] = Salvar uma imagem do produto e salvar em uma pasta de imagens.
+[] = Mandar um e-mail para um cliente
+[] = Mandar um sms para um cliente
+[] = Criar modelo garçom
+[] = Criar mesa
  
