@@ -3,6 +3,8 @@ const USER = require('./controller/userController')
 const CLIENTE = require('./controller/clienteController')
 const PRODUTO  = require('./controller/produtoController')
 const VENDA = require('./controller/vendaController')
+const multer = require('multer')
+const multerConfig = require('./utils/uploadImage')
 
 const routes = Router()
 
@@ -20,7 +22,7 @@ routes.post('/cliente', CLIENTE.store)
 routes.get('/produto', PRODUTO.index)
 routes.get('/findProduto', PRODUTO.findProduct)
 routes.post('/produto', PRODUTO.store)
-routes.post('/produtoImagem', PRODUTO.storeImage)
+routes.post('/produtoImagem', multer(multerConfig).single('file'), PRODUTO.storeImage)
 
 /**Usando as rotas de vendas */
 routes.get('/venda', VENDA.index)

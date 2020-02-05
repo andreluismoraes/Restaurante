@@ -14,8 +14,11 @@ const ProdutoSchema = new mongoose.Schema({
     validadeProduto: Date,
     /**modelo de adicionar imagens ao produto */
     imagemProduto: new mongoose.Schema({
-        nomeImagem: String,
-        localImagem: [String]
+        originalname: String,
+        destination: String,
+        filename: String,
+        path: String,
+        size: Number
     })
 })
 

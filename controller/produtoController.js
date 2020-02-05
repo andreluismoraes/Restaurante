@@ -1,7 +1,6 @@
 const PRODUTO = require('../model/produtoModel')
 const convertDate = require('../utils/dateConverter')
 const validateDate = require('validate-date')
-const fs = require('fs')
 
 module.exports = {
     /**mostrando todos os produtos */
@@ -50,7 +49,20 @@ module.exports = {
     /**adicionando imagens ao produto */
     /**achei melhor montar a imagem do produto separado pois o store está com muito código ----> ^(*-*)^ ---- */
     async storeImage(req, res){
-        res.json({message: 'ola'})
+        const {originalname, destination, filename, path, size} = await req.file
+        
+        const codigoProduto = req.query
+
+        const produto = await PRODUTO.findOneAndUpdate(
+            //search
+            {codigoProduto},
+            //update
+            {$set: {imagemProduto: {originalname, destination, filename, path, size}}},
+            //habilitando o upsert do produto e retornando com new:true
+            {upsert: true, new: true}
+        )
+
+        res.json(produto)
     },
 }
 
@@ -66,6 +78,9 @@ module.exports = {
     imagemProduto: [Object] */
 
     /**imagem{
-     * nomeImagem: String,
-    localImagem: String,
+     originalname: String,
+        destination: String,
+        filename: String,
+        path: String,
+        size: Number
     }*/
