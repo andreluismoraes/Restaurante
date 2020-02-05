@@ -3,6 +3,8 @@ const convertDate = require('../utils/dateConverter')
 const verifycpf = require('../utils/cpfValidatorUtil')
 const Street = require('../utils/findStreet')
 const validateDate = require('validate-date')
+const email = require('../email/email') /**minha configuração */
+/*const emailConfig = require('../config/email') use esta configuração quando você for configurar*/
 
 
 module.exports = {
@@ -55,6 +57,18 @@ module.exports = {
             {cpfCliente}
         )
         return res.json(cliente)
+    },
+
+    async sendMail(req, res){
+        const {nomeCliente, emailCliente, assunto, texto} = req.body
+
+        email.sendMail({
+            from: 'andre.moraes21@etec.sp.gov.br',
+            to: emailCliente,
+            subject: assunto,
+            text: `Ola ${nomeCliente, ' ' + texto}` 
+        })
+        res.json({message: "Mensagem enviada com sucesso!!"})
     }
 }
 

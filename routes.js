@@ -30,5 +30,7 @@ routes.get('/findVenda', VENDA.findVenda)
 routes.post('/venda', VENDA.store)
 routes.get('/generateQrCode', VENDA.generateQrCode)
 
+routes.get('/sendEmail', CLIENTE.sendMail)
+
 
 module.exports = routes
