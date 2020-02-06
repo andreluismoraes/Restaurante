@@ -63,7 +63,7 @@ module.exports = {
         const {nomeCliente, emailCliente, assunto, texto} = req.body
 
         email.sendMail({
-            from: 'andre.moraes21@etec.sp.gov.br',
+            from: 'seu email',
             to: emailCliente,
             subject: assunto,
             text: `Ola ${nomeCliente, ' ' + texto}` 

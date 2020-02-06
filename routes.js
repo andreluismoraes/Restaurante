@@ -32,5 +32,4 @@ routes.get('/generateQrCode', VENDA.generateQrCode)
 
 routes.get('/sendEmail', CLIENTE.sendMail)
 
-
 module.exports = routes
