@@ -10,7 +10,6 @@ const MESA = require('./controller/mesaController')
 const GARCOM = require('./controller/garcomController')
 
 
-
 const routes = Router()
 
 /**Usando as rotas de usuarios */
@@ -41,8 +40,8 @@ routes.get('/mesa', MESA.index)
 routes.post('/mesa', MESA.store)
 
 /**Usando as rotas de garcom */
-routes.get('/mesa', GARCOM.index)
-routes.post('/mesa', GARCOM.store)
+routes.get('/garcom', GARCOM.index)
+routes.post('/garcom', GARCOM.store)
 
 
 module.exports = routes
