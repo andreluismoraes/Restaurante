@@ -1,10 +1,15 @@
 const {Router} = require('express')
+const multer = require('multer')
+const multerConfig = require('./utils/uploadImage')
+
 const USER = require('./controller/userController')
 const CLIENTE = require('./controller/clienteController')
 const PRODUTO  = require('./controller/produtoController')
 const VENDA = require('./controller/vendaController')
-const multer = require('multer')
-const multerConfig = require('./utils/uploadImage')
+const MESA = require('./controller/mesaController')
+const GARCOM = require('./controller/garcomController')
+
+
 
 const routes = Router()
 
@@ -17,6 +22,7 @@ routes.post('/user', USER.store)
 routes.get('/cliente', CLIENTE.index)
 routes.get('/findCliente', CLIENTE.findCliente)
 routes.post('/cliente', CLIENTE.store)
+routes.get('/sendEmail', CLIENTE.sendMail)
 
 /**Usando as rotas dos produtos */
 routes.get('/produto', PRODUTO.index)
@@ -30,6 +36,13 @@ routes.get('/findVenda', VENDA.findVenda)
 routes.post('/venda', VENDA.store)
 routes.get('/generateQrCode', VENDA.generateQrCode)
 
-routes.get('/sendEmail', CLIENTE.sendMail)
+/**Usando as rotas de mesa */
+routes.get('/mesa', MESA.index)
+routes.post('/mesa', MESA.store)
+
+/**Usando as rotas de garcom */
+routes.get('/mesa', GARCOM.index)
+routes.post('/mesa', GARCOM.store)
+
 
 module.exports = routes
