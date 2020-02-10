@@ -7,8 +7,25 @@ module.exports = {
     },
 
     async store(req, res){
-        const mesa = await MESA.find()
+        /**adicionando uma mesa não irá precisar digitar um código de uma mesa
+         * só adicionar mesmo
+         */
+
+        /**trazendo o ultimo cadastro realizado e acrescentando mais uma unidade*/
+        const codigo = await MESA.find().limit(1).sort({$natural: -1})
+        codigoMesa = codigo.map(data => data.codigoMesa)
+        codigoMesa++
+
+        /**cadastrando uma nova mesa */
+        const mesa = await MESA.findOneAndUpdate(
+            {codigoMesa},
+            {$set: { codigoMesa }},
+            {upsert: true, new: true}
+        )
+
         res.json(mesa)
     },
 
 }
+
+/**codigoMesa: Number, */
