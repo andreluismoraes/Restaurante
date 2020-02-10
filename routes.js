@@ -8,6 +8,7 @@ const PRODUTO  = require('./controller/produtoController')
 const VENDA = require('./controller/vendaController')
 const MESA = require('./controller/mesaController')
 const GARCOM = require('./controller/garcomController')
+const PEDIDO = require('./controller/pedidoController')
 
 
 const routes = Router()
@@ -43,5 +44,8 @@ routes.post('/mesa', MESA.store)
 routes.get('/garcom', GARCOM.index)
 routes.post('/garcom', GARCOM.store)
 
+/**Usando as rotas de pedido */
+routes.get('/pedido', PEDIDO.index)
+routes.post('/pedido', PEDIDO.store)
 
 module.exports = routes
