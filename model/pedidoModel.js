@@ -1,8 +1,17 @@
 const mongoose = require('mongoose')
 
-const PedidoSchema = mongoose.Schema({
+const PedidoSchema = new mongoose.Schema({
     codigoPedido: Number,
-    codigoProduto: [mongoose.Types.ObjectId],
+    codigoMesa: {
+       type: mongoose.Types.ObjectId,
+       ref: 'Mesa'
+    },
+    codigoProduto: [
+        { 
+            type: mongoose.Types.ObjectId, 
+            ref: 'Produto' 
+        }
+    ]
 })
 
 module.exports = mongoose.model('Pedido', PedidoSchema)
