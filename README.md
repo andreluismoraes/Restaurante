@@ -27,6 +27,8 @@ Planejando:
 [x] Salvar uma imagem do produto e salvar em uma pasta de imagens.
 [x] Mandar um e-mail para um cliente
 [] Mandar um sms para um cliente => Só achei com API pagas.. Testar posteriormente!!!
-[] Criar modelo garçom
-[] Criar mesa
+[x] Criar modelo garçom
+[x] Criar mesa
+[] Realizar um pedido na mesa
+[] Fechar conta da mesa => após pago jogar como uma venda realizada
  
