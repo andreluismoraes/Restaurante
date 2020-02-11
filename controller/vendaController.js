@@ -103,7 +103,8 @@ module.exports = {
         // // /**fim da geração do Qr */
 
         return res.json(venda/*{message: 'QRCode gerado com sucesso!'}*/)
-    }
+    },
+
 }
 
 

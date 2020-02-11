@@ -31,10 +31,12 @@ module.exports = {
         /**achando o pedido */
         const pedido = await PEDIDO.find(
             {codigoPedido}
-        )
+        ).populate('codigoProduto')
 
-        /**executando a venda */
-        console.log(codigoPedido)
+        //fechando o pedido
+        await VENDA.insertMany(
+            {produtoVenda: pedido}
+        )
 
         res.json(pedido)
     }
