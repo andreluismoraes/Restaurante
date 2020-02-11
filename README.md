@@ -30,6 +30,6 @@ Planejando:
 [x] Criar modelo garçom
 [x] Criar mesa
 [x] Realizar um pedido na mesa
-[] Ajustar a venda pelo código do produto ao invés de nome
+[x] Ajustar a venda pelo código do produto ao invés de nome
 [] Fechar conta da mesa => após pago jogar como uma venda realizada
  
