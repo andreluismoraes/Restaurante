@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const PedidoSchema = new mongoose.Schema({
+    garcom: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Garcom'
+    },
     codigoPedido: Number,
     codigoMesa: {
        type: mongoose.Types.ObjectId,
