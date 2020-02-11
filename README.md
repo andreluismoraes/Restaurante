@@ -29,6 +29,7 @@ Planejando:
 [] Mandar um sms para um cliente => Só achei com API pagas.. Testar posteriormente!!!
 [x] Criar modelo garçom
 [x] Criar mesa
-[] Realizar um pedido na mesa
+[x] Realizar um pedido na mesa
+[] Ajustar a venda pelo código do produto ao invés de nome
 [] Fechar conta da mesa => após pago jogar como uma venda realizada
  

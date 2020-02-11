@@ -14,6 +14,7 @@ module.exports = {
     async store(req, res){
         const {codigoProduto, nomeProduto, valorProduto, quantidadeProduto, validade} = req.body
 
+        
         //verificando data
         const date = validateDate(validade)
         if(date == 'Invalid Format'){

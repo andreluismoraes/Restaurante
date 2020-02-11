@@ -47,5 +47,6 @@ routes.post('/garcom', GARCOM.store)
 /**Usando as rotas de pedido */
 routes.get('/pedido', PEDIDO.index)
 routes.post('/pedido', PEDIDO.store)
+routes.post('/fecharPedido', PEDIDO.fecharPedido)
 
 module.exports = routes

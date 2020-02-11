@@ -1,4 +1,5 @@
 const PEDIDO = require('../model/pedidoModel')
+const VENDA = require('../model/vendasModel')
 
 module.exports = {
     async index(req, res){
@@ -19,6 +20,21 @@ module.exports = {
             //habilitando o upsert e o retorno new:true
             {upsert: true, new: true}
         )
+
+        res.json(pedido)
+    },
+
+    /**esperar ajustar o novo modelo de venda */
+    async fecharPedido(req, res){
+        const {codigoPedido} = req.query
+
+        /**achando o pedido */
+        const pedido = await PEDIDO.find(
+            {codigoPedido}
+        )
+
+        /**executando a venda */
+        console.log(codigoPedido)
 
         res.json(pedido)
     }
