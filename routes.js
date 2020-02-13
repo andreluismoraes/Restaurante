@@ -9,6 +9,8 @@ const VENDA = require('./controller/vendaController')
 const MESA = require('./controller/mesaController')
 const GARCOM = require('./controller/garcomController')
 const PEDIDO = require('./controller/pedidoController')
+const TOKEN = require('./controller/tokenController')
+const verifyToken = require('./utils/verifyToken')
 
 
 const routes = Router()
@@ -48,5 +50,10 @@ routes.post('/garcom', GARCOM.store)
 routes.get('/pedido', PEDIDO.index)
 routes.post('/pedido', PEDIDO.store)
 routes.post('/fecharPedido', PEDIDO.fecharPedido)
+
+/**Usando as rotas de token */
+routes.get('/token', TOKEN.index)
+routes.post('/token', TOKEN.store)
+routes.get('/auth', verifyToken, USER.index)
 
 module.exports = routes
