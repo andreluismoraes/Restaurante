@@ -32,6 +32,6 @@ Planejando:
 [x] Realizar um pedido na mesa
 [x] Ajustar a venda pelo código do produto ao invés de nome
 [x] Fechar conta da mesa => após pago jogar como uma venda realizada
-[] Criar token de autenticação com jwt
+[x] Criar token de autenticação com jwt
 [] Criar nivel de autenticação
  

@@ -11,6 +11,7 @@ const GARCOM = require('./controller/garcomController')
 const PEDIDO = require('./controller/pedidoController')
 const TOKEN = require('./controller/tokenController')
 const verifyToken = require('./utils/verifyToken')
+const nivelAcess = require('./utils/nivelAcess')
 
 
 const routes = Router()
@@ -55,5 +56,8 @@ routes.post('/fecharPedido', PEDIDO.fecharPedido)
 routes.get('/token', TOKEN.index)
 routes.post('/token', TOKEN.store)
 routes.get('/auth', verifyToken, USER.index)
+
+/**verificando nivel de acesso */
+routes.get('/nivel', nivelAcess, USER.index)
 
 module.exports = routes
