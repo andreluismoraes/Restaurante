@@ -13,12 +13,20 @@ module.exports = (req, res, next) =>{
         
     }
 
-    jwt.verify(token, process.env.secret, (err, decoded) =>{
+    // jwt.verify(token, process.env.secret, (err, decoded) =>{
+    //     if(err){
+    //         return res.json({message: 'Token inválido'})
+    //     }
+    // })
+
+    jwt.verify(token, process.env.secret, (err, token) =>{
         if(err){
-            return res.json({message: 'Token inválido'})
+            return res.json({message: 'Token Inválido'})
+        }else{
+            return next()
         }
     })
 
-    return next()
+    //return next()
 }
 
