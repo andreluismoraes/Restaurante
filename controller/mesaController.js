@@ -3,7 +3,7 @@ const MESA = require('../model/mesaModel')
 module.exports = {
     async index(req, res){
         const mesa = await MESA.find()
-        res.json(mesa)
+        return res.json(mesa)
     },
 
     async store(req, res){
@@ -23,7 +23,7 @@ module.exports = {
             {upsert: true, new: true}
         )
 
-        res.json(mesa)
+        return res.json(mesa)
     },
 
 }

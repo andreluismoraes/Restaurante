@@ -63,7 +63,7 @@ module.exports = {
             {upsert: true, new: true}
         )
 
-        res.json(produto)
+        return res.json(produto)
     },
 }
 

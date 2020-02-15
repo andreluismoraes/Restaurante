@@ -5,7 +5,7 @@ module.exports = {
     async index(req, res){
         /**procurar todos os pedidos e mostrar todos os dados */
         const pedido = await PEDIDO.find().populate('codigoProduto')
-        res.json(pedido)
+        return res.json(pedido)
     },
 
     async store(req, res){
@@ -21,7 +21,7 @@ module.exports = {
             {upsert: true, new: true}
         )
 
-        res.json(pedido)
+        return res.json(pedido)
     },
 
     /**esperar ajustar o novo modelo de venda */
@@ -38,7 +38,7 @@ module.exports = {
             {produtoVenda: pedido}
         )
 
-        res.json(pedido)
+        return res.json(pedido)
     }
 }
 

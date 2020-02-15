@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     async index(req, res){
         const garcom = await GARCOM.find()
-        res.json(garcom)
+        return res.json(garcom)
     },
 
     async store(req, res){
@@ -21,7 +21,7 @@ module.exports = {
             {upsert: true, new: true}
         )
 
-        res.json(garcom)
+        return res.json(garcom)
     }
 }
 

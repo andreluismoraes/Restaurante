@@ -9,12 +9,13 @@ module.exports = (req, res, next) =>{
     //formato + hash
     //Bearer açdslkjasdfjk
     if(!token){
-        res.json({message: 'Nenhum token informado'})
+        return res.json({message: 'Nenhum token informado'})
+        
     }
 
     jwt.verify(token, process.env.secret, (err, decoded) =>{
         if(err){
-            res.json({message: 'Token inválido'})
+            return res.json({message: 'Token inválido'})
         }
     })
 

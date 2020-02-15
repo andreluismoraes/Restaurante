@@ -68,7 +68,7 @@ module.exports = {
             subject: assunto,
             text: `Ola ${nomeCliente, ' ' + texto}` 
         })
-        res.json({message: "Mensagem enviada com sucesso!!"})
+        return res.json({message: "Mensagem enviada com sucesso!!"})
     }
 }
 

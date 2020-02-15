@@ -5,7 +5,7 @@ require('dotenv').config()
 module.exports = {
     async index(req, res){
         const token = await TOKEN.find()
-        res.json(token)
+        return res.json(token)
     },
 
     async store(req,res){
@@ -18,7 +18,7 @@ module.exports = {
             {$set: {idUser, idToken}},
             {upsert: true, new:true}
         )
-        res.json(token)
+        return res.json(token)
     }
 }
 
